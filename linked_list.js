@@ -20,7 +20,17 @@ export default class LinkedList {
   }
 
   // adds a new node containing value to the start of the list
-  prepend(value) {}
+  prepend(value) {
+    //if list is empty, assign in properties of new Node instance
+    if (Object.keys(this).length === 0) {
+      Object.assign(this, new NodeInstance(value));
+    } else {
+      //otherwise replace the first node's value property value with the value arguments data, and change its first node to point at the previously first node
+      let previousFirstNode = structuredClone(this);
+      this.value = value;
+      this.next = previousFirstNode;
+    }
+  }
 
   //returns the total number of nodes in the list
   size() {}
