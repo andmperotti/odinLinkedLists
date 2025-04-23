@@ -1,5 +1,4 @@
 import LinkedList from "./linked_list.js";
-import Node from "./node_instance.js";
 
 // example uses class syntax - adjust as necessary
 const list = new LinkedList();

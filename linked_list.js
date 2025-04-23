@@ -47,12 +47,14 @@ export default class LinkedList {
   toString() {
     //I think we'll use iteration and build a string for each node that we'll combine to make a result string
     // parentheses if there is a value property/obj!==null, value, close parentheses, arrow, repeat unless null then null
-    let resultString = ``;
+    let stringArr = [];
     let currentNode = this;
-    // while (currentNode.next !== null) {
-    //   resultString.concat(`${currentNode.value} -> `);
-    // }
-    resultString.concat("null");
+    while (currentNode.next !== null) {
+      stringArr.push(`(${currentNode.value}) -> `);
+      currentNode = currentNode.next;
+    }
+    stringArr.push("null");
+    return stringArr.join("");
   }
 
   //that inserts a new node with the provided value at the given index.
