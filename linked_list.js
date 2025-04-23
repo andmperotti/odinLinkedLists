@@ -9,6 +9,11 @@ export default class LinkedList {
   //adds a new node containing value to the end of the list
   append(value) {
     //iterate to end of linked list and add this value as a node
+    let tempNode = this;
+    while (obj.next !== null) {
+      tempNode = tempNode.next;
+    }
+    tempNode.next = {value: value, next: null};
   }
 
   // adds a new node containing value to the start of the list
