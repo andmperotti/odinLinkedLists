@@ -52,7 +52,14 @@ export default class LinkedList {
   }
 
   //returns the last node in the list
-  tail() {}
+  tail() {
+    let tempNode = this;
+    //iterate until you reach the element before the last element, and change the temp variable to the next node
+    while (tempNode.next !== null) {
+      tempNode = tempNode.next;
+    }
+    return tempNode;
+  }
 
   //returns the node at the given index
   at(index) {}
