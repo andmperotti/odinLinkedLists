@@ -33,7 +33,18 @@ export default class LinkedList {
   }
 
   //returns the total number of nodes in the list
-  size() {}
+  size() {
+    //create a variable which is a counter
+    let nodeCount = 0;
+    //use a while loop to iterate over nodes until you read null and increment counter
+    let tempNode = this;
+    while (tempNode !== null) {
+      nodeCount++;
+      tempNode = tempNode.next;
+    }
+    //return counter after iteration has completed
+    return nodeCount;
+  }
 
   //returns the first node in the list
   head() {}
