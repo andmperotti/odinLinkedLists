@@ -1,8 +1,15 @@
+import NodeInstance from "./node_instance.js";
+
 export default class LinkedList {
-  constructor() {}
+  constructor(value = null, next = null) {
+    this.value = value;
+    this.next = null;
+  }
 
   //adds a new node containing value to the end of the list
-  append(value) {}
+  append(value) {
+    //iterate to end of linked list and add this value as a node
+  }
 
   // adds a new node containing value to the start of the list
   prepend(value) {}
