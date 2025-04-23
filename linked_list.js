@@ -47,7 +47,9 @@ export default class LinkedList {
   }
 
   //returns the first node in the list
-  head() {}
+  head() {
+    return this;
+  }
 
   //returns the last node in the list
   tail() {}

@@ -14,3 +14,4 @@ console.log(list.toString()); //( dog ) -> ( cat ) -> ( parrot ) -> ( hamster ) 
 list.prepend("drew");
 console.log(list.toString()); //( drew ) -> ( dog ) -> ( cat ) -> ( parrot ) -> ( hamster ) -> ( snake ) -> ( turtle ) -> null
 console.log(list.size()); //7
+console.log(list.head()); // {value: 'drew', next:....}
