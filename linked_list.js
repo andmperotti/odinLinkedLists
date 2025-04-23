@@ -1,28 +1,39 @@
-export default class LinkedList{
-    constructor(){
-    }
-    
-    append(value){}
+export default class LinkedList {
+  constructor() {}
 
-    prepend(value){}
+  //adds a new node containing value to the end of the list
+  append(value) {}
 
-    size(){}
+  // adds a new node containing value to the start of the list
+  prepend(value) {}
 
-    head(){}
+  //returns the total number of nodes in the list
+  size() {}
 
-    tail(){}
+  //returns the first node in the list
+  head() {}
 
-    at(index){}
+  //returns the last node in the list
+  tail() {}
 
-    pop(){}
+  //returns the node at the given index
+  at(index) {}
 
-    contains(value){}
+  //removes the last element from the list
+  pop() {}
 
-    find(value){}
+  //returns true if the passed in value is in the list and otherwise returns false.
+  contains(value) {}
 
-    toString(){}
+  //returns the index of the node containing value, or null if not found.
+  find(value) {}
 
-    insertAt(value, index){}
+  //represents your LinkedList objects as strings, so you can print them out and preview them in the console. The format should be: ( value ) -> ( value ) -> ( value ) -> null
+  toString() {}
 
-    removeAt(index){}
+  //that inserts a new node with the provided value at the given index.
+  insertAt(value, index) {}
+
+  //that removes the node at the given index.
+  removeAt(index) {}
 }
