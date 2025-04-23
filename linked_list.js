@@ -5,15 +5,16 @@ export default class LinkedList {
 
   //adds a new node containing value to the end of the list
   append(value) {
-    //i think we need a way to add a first node, aka check if nodes or empty list
-    if (Object.keys(this) === 0) {
-      this.concat(new NodeInstance(value));
+    if (Object.keys(this).length === 0) {
+      //if the linked list is empty, create an instance of the NodeInstance class, and assign in the properties of that node
+      Object.assign(this, new NodeInstance(value));
     } else {
-      //iterate to end of linked list and add this value as a node
+      //otherwise we need to iterate to find the last node in the linked list
       let tempNode = this;
       while (tempNode.next !== null) {
         tempNode = tempNode.next;
       }
+      //change the next property value of the last node(or even first if only one node exists), to point to a new node
       tempNode.next = new NodeInstance(value);
     }
   }
