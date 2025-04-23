@@ -13,7 +13,7 @@ export default class LinkedList {
     while (obj.next !== null) {
       tempNode = tempNode.next;
     }
-    tempNode.next = {value: value, next: null};
+    tempNode.next = new NodeInstance(value);
   }
 
   // adds a new node containing value to the start of the list
