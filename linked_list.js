@@ -41,7 +41,16 @@ export default class LinkedList {
   find(value) {}
 
   //represents your LinkedList objects as strings, so you can print them out and preview them in the console. The format should be: ( value ) -> ( value ) -> ( value ) -> null
-  toString() {}
+  toString() {
+    //I think we'll use iteration and build a string for each node that we'll combine to make a result string
+    // parentheses if there is a value property/obj!==null, value, close parentheses, arrow, repeat unless null then null
+    let resultString = ``;
+    let currentNode = this;
+    while (currentNode.next !== null) {
+      resultString.push(`${value} -> `);
+    }
+    resultString.push("null");
+  }
 
   //that inserts a new node with the provided value at the given index.
   insertAt(value, index) {}
