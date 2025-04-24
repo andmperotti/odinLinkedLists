@@ -183,5 +183,23 @@ export default class LinkedList {
   }
 
   //that removes the node at the given index.
-  removeAt(index) {}
+  removeAt(index) {
+    if (this.head === null) {
+      console.log("list is empty already");
+    } else {
+      let currentNode = this.head;
+      let indexCount = 0;
+      let prevNode;
+      while (currentNode.next !== null && indexCount !== index) {
+        prevNode = currentNode;
+        currentNode = currentNode.next;
+        indexCount++;
+      }
+      if (indexCount === index) {
+        prevNode.next = currentNode.next;
+      } else {
+        console.log("no nodes currently at that index");
+      }
+    }
+  }
 }
