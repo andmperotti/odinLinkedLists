@@ -169,11 +169,16 @@ export default class LinkedList {
         let newNode = new NodeInstance(value);
         prevNode.next = newNode;
         newNode.next = currentNode;
+      }
+      if (currentIndex + 1 === index) {
+        currentNode.next = new NodeInstance(value);
+        currentNode.next.next = null;
       } else {
-        console.log("index grater than current amount of nodes");
+        console.log("index greater than current amount of nodes");
       }
     }
   }
+  //trying to add a node to the back isn't working
 
   //that removes the node at the given index.
   removeAt(index) {
