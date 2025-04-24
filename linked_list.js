@@ -117,7 +117,23 @@ export default class LinkedList {
   }
 
   //returns true if the passed in value is in the list and otherwise returns false.
-  contains(value) {}
+  contains(value) {
+    if (this.head === null) {
+      return false;
+    } else {
+      let tempNode = this.head;
+      //loop until you find the value or run out of nodes
+      while (tempNode.value !== value && tempNode.next !== null) {
+        tempNode = tempNode.next;
+      }
+      //if the value is found return true, otherwise return false
+      if (tempNode.value === value) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
 
   //returns the index of the node containing value, or null if not found.
   find(value) {}
