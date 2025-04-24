@@ -150,12 +150,12 @@ export default class LinkedList {
   insertAt(value, index) {
     if (this.head === null && index > 0) {
       console.log("index greater than current amount of nodes");
-    } else if (index === 0 && head === null) {
+    } else if (index === 0 && this.head === null) {
       this.head = new NodeInstance(value);
     } else if (index === 0 && this.head.next !== null) {
-      let prevHead = this.head;
-      this.head = new NodeInstance("gene");
-      this.head.next = prevHead;
+      let prevNode = this.head;
+      this.head = new NodeInstance(value);
+      this.head.next = prevNode;
     } else {
       let currentNode = this.head;
       let currentIndex = 0;
