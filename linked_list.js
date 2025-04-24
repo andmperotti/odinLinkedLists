@@ -7,9 +7,9 @@ export default class LinkedList {
 
   //adds a new node containing value to the end of the list
   append(value) {
-    if (Object.keys(this).length === 0) {
+    if (this.head === null) {
       //if the linked list is empty, create an instance of the NodeInstance class, and assign in the properties of that node
-      Object.assign(this, new NodeInstance(value));
+      this.head = new NodeInstance(value);
     } else {
       //otherwise we need to iterate to find the last node in the linked list
       let tempNode = this;
