@@ -148,10 +148,14 @@ export default class LinkedList {
 
   //that inserts a new node with the provided value at the given index.
   insertAt(value, index) {
-    if ((this.head === null) & (index > 0)) {
+    if (this.head === null && index > 0) {
       console.log("index greater than current amount of nodes");
     } else if (index === 0 && head === null) {
       this.head = new NodeInstance(value);
+    } else if (index === 0 && this.head.next !== null) {
+      let prevHead = this.head;
+      this.head = new NodeInstance("gene");
+      this.head.next = prevHead;
     } else {
       let currentNode = this.head;
       let currentIndex = 0;
