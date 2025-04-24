@@ -77,12 +77,11 @@ export default class LinkedList {
       return null;
     } else {
       //otherwise, create a counter variable and a temp variable to point with, iterate over the nodes until you find the node at the index value position or the end of the linked list
-      //we'll increment this temp node variable differently because we want to return the node, not just the counter or the value property's value
       let counter = 0;
       let tempNode = this.head;
       while (tempNode !== null && counter !== index) {
         counter++;
-        tempNode += ".next";
+        tempNode = tempNode.next;
       }
       //check whether the counter value does match index and if so return index, otherwise return null because that means the length of the list is not the index value
       if (counter === index) {
@@ -94,7 +93,28 @@ export default class LinkedList {
   }
 
   //removes the last element from the list
-  pop() {}
+  pop() {
+    //condition for when the list is empty
+    if (this.head === null) {
+      return;
+    } else {
+      //iterate until you reach the last node
+      let prevNode;
+      let tempNode = this.head;
+      while (tempNode.next !== null) {
+        prevNode = tempNode;
+        tempNode = tempNode.next;
+      }
+      //condition to check if previous node is a node or the linked list start
+      if (prevNode.hasOwn(next)) {
+        //change the previous nodes next property to null, removing the last node
+        prevNode.next = null;
+      } else if (prevNode.hasOwn(head)) {
+        //change the linked lists head property to null deleting the last/only node
+        prevNode.head = null;
+      }
+    }
+  }
 
   //returns true if the passed in value is in the list and otherwise returns false.
   contains(value) {}
