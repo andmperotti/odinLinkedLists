@@ -8,26 +8,21 @@ export default class LinkedList {
   //adds a new node containing value to the end of the list
   append(value) {
     if (this.head === null) {
-      //if the linked list is empty, create an instance of the NodeInstance class, and assign it to the head property of the linked list
       this.head = new NodeInstance(value);
     } else {
-      //otherwise, create a temp variable and point it to the first node in the linked list, iterate over each node and point to it using that temporary variable until the last node in the linked list
       let tempNode = this.head;
       while (tempNode.next !== null) {
         tempNode = tempNode.next;
       }
-      //add a new node to the linked list by changing the last nodes next property to point to a new node instance we create with the value argument
       tempNode.next = new NodeInstance(value);
     }
   }
 
   // adds a new node containing value to the start of the list
   prepend(value) {
-    //if list is empty, assign  new node to the head property of the linked list
     if (this.head === null) {
       this.head = new NodeInstance(value);
     } else {
-      //otherwise set up a temp variable to reference the current first node in the linked list, then change the first node in the linked list by changing the head pointer to a new node instance, and then change the next property of that new node to point to the previous head node
       let previousFirstNode = this.head;
       this.head = new NodeInstance(value);
       this.head.next = previousFirstNode;
@@ -36,15 +31,12 @@ export default class LinkedList {
 
   //returns the total number of nodes in the list
   size() {
-    //create a variable which is a counter
     let nodeCount = 0;
-    //use a while loop to iterate over nodes until you read null and increment the counter variable appropriately
     let tempNode = this.head;
     while (tempNode !== null) {
       nodeCount++;
       tempNode = tempNode.next;
     }
-    //return counter after iteration has completed
     return nodeCount;
   }
 
@@ -55,35 +47,28 @@ export default class LinkedList {
 
   //returns the last node in the list
   tail() {
-    //if the linked list is empty return null, as in there are no nodes in the list
     if (this.head === null) {
       return null;
     } else {
-      //otherwise if there are nodes, ,create a temp variable to point at the first node
       let tempNode = this.head;
-      //iterate until you reach the element before the last element, and change the temp variable to the next node
       while (tempNode.next !== null) {
         tempNode = tempNode.next;
       }
-      //return the last node, which is pointing to the tail node of the linked list
       return tempNode;
     }
   }
 
   //returns the node at the given index
   at(index) {
-    //check whether there are nodes in the list, if not return null
     if (this.head === null) {
       return null;
     } else {
-      //otherwise, create a counter variable and a temp variable to point with, iterate over the nodes until you find the node at the index value position or the end of the linked list
       let counter = 0;
       let tempNode = this.head;
       while (tempNode !== null && counter !== index) {
         counter++;
         tempNode = tempNode.next;
       }
-      //check whether the counter value does match index and if so return index, otherwise return null because that means the length of the list is not the index value
       if (counter === index) {
         return tempNode;
       } else {
@@ -115,11 +100,9 @@ export default class LinkedList {
       return false;
     } else {
       let tempNode = this.head;
-      //loop until you find the value or run out of nodes
       while (tempNode.value !== value && tempNode.next !== null) {
         tempNode = tempNode.next;
       }
-      //if the value is found return true, otherwise return false
       if (tempNode.value === value) {
         return true;
       } else {
@@ -149,7 +132,6 @@ export default class LinkedList {
 
   //represents your LinkedList objects as strings, so you can print them out and preview them in the console. The format should be: ( value ) -> ( value ) -> ( value ) -> null
   toString() {
-    //check if the list is empty
     if (this.head === null) {
       return null;
     } else {
@@ -159,7 +141,6 @@ export default class LinkedList {
         stringArr.push(`(${currentNode.value}) -> `);
         currentNode = currentNode.next;
       }
-      //null ending
       stringArr.push("null");
       return stringArr.join("");
     }
@@ -168,23 +149,18 @@ export default class LinkedList {
   //that inserts a new node with the provided value at the given index.
   insertAt(value, index) {
     if ((this.head === null) & (index > 0)) {
-      //no nodes but index other than 0 is given
       console.log("index greater than current amount of nodes");
     } else if (index === 0 && head === null) {
-      //replacing the first node which wasn't a node
       this.head = new NodeInstance(value);
     } else {
-      //when inserting a node anywhere else in the list
       let currentNode = this.head;
       let currentIndex = 0;
       let prevNode;
       while (currentIndex !== index && currentNode.next !== null) {
-        //iterate until you have reached the index targeted or until the end of the array
         prevNode = currentNode;
         currentIndex++;
         currentNode = currentNode.next;
       }
-      //if the reached node is the correctly targeted index then insert the new node
       if (currentIndex === index) {
         let newNode = new NodeInstance(value);
         prevNode.next = newNode;
@@ -197,11 +173,9 @@ export default class LinkedList {
 
   //that removes the node at the given index.
   removeAt(index) {
-    //if list is empty
     if (this.head === null) {
       console.log("list is empty already");
     } else if (index === 0 && this.head.next === null) {
-      //if list only has one node
       this.head = null;
     } else {
       let currentNode = this.head;
@@ -212,14 +186,11 @@ export default class LinkedList {
         currentNode = currentNode.next;
         indexCount++;
       }
-      //if removing the first node when there are more than one node
       if (index === 0 && indexCount === 0) {
         this.head = currentNode.next;
       } else if (indexCount === index) {
-        //otherwise when removing any node other than the first one
         prevNode.next = currentNode.next;
       } else {
-        //when there are no nodes to delete at that index given
         console.log("no nodes currently at that index");
       }
     }
