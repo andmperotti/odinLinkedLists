@@ -8,29 +8,29 @@ export default class LinkedList {
   //adds a new node containing value to the end of the list
   append(value) {
     if (this.head === null) {
-      //if the linked list is empty, create an instance of the NodeInstance class, and assign in the properties of that node
+      //if the linked list is empty, create an instance of the NodeInstance class, and assign it to the head property of the linked list
       this.head = new NodeInstance(value);
     } else {
-      //otherwise we need to iterate to find the last node in the linked list
-      let tempNode = this;
+      //otherwise, create a temp variable and point it to the first node in the linked list, iterate over each node and point to it using that temporary variable until the last node in the linked list
+      let tempNode = this.head;
       while (tempNode.next !== null) {
         tempNode = tempNode.next;
       }
-      //change the next property value of the last node(or even first if only one node exists), to point to a new node
+      //add a new node to the linked list by changing the last nodes next property to point to a new node instance we create with the value argument
       tempNode.next = new NodeInstance(value);
     }
   }
 
   // adds a new node containing value to the start of the list
   prepend(value) {
-    //if list is empty, assign in properties of new Node instance
-    if (Object.keys(this).length === 0) {
-      Object.assign(this, new NodeInstance(value));
+    //if list is empty, assign  new node to the head property of the linked list
+    if (this.head === null) {
+      this.head = new NodeInstance(value);
     } else {
-      //otherwise replace the first node's value property value with the value arguments data, and change its first node to point at the previously first node
-      let previousFirstNode = structuredClone(this);
-      this.value = value;
-      this.next = previousFirstNode;
+      //otherwise set up a temp variable to reference the current first node in the linked list, then change the first node in the linked list by changing the head pointer to a new node instance, and then change the next property of that new node to point to the previous head node
+      let previousFirstNode = this.head;
+      this.head = new NodeInstance(value);
+      this.head.next = previousFirstNode;
     }
   }
 
