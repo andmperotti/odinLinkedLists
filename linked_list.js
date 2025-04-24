@@ -160,7 +160,7 @@ export default class LinkedList {
   //that inserts a new node with the provided value at the given index.
   insertAt(value, index) {
     if ((this.head === null) & (index > 0)) {
-      return "index greater than current amount of nodes";
+      console.log("index greater than current amount of nodes");
     } else {
       let currentNode = this.head;
       let currentIndex = 0;
@@ -177,7 +177,7 @@ export default class LinkedList {
         prevNode.next = newNode;
         newNode.next = currentNode;
       } else {
-        return "index grater than current amount of nodes";
+        console.log("index grater than current amount of nodes");
       }
     }
   }
