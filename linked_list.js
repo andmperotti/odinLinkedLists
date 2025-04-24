@@ -38,8 +38,8 @@ export default class LinkedList {
   size() {
     //create a variable which is a counter
     let nodeCount = 0;
-    //use a while loop to iterate over nodes until you read null and increment counter
-    let tempNode = this;
+    //use a while loop to iterate over nodes until you read null and increment the counter variable appropriately
+    let tempNode = this.head;
     while (tempNode !== null) {
       nodeCount++;
       tempNode = tempNode.next;
