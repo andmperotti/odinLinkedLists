@@ -48,7 +48,7 @@ export default class LinkedList {
     return nodeCount;
   }
 
-  //returns the first node in the list or null if no nodes
+  //returns the first node in the list
   head() {
     return this.head;
   }
@@ -94,25 +94,18 @@ export default class LinkedList {
 
   //removes the last element from the list
   pop() {
-    //condition for when the list is empty
     if (this.head === null) {
       return;
+    } else if (this.head.next === null) {
+      this.head = null;
     } else {
-      //iterate until you reach the last node
       let prevNode;
       let tempNode = this.head;
       while (tempNode.next !== null) {
         prevNode = tempNode;
         tempNode = tempNode.next;
       }
-      //condition to check if previous node is a node or the linked list start
-      if (prevNode.hasOwn(next)) {
-        //change the previous nodes next property to null, removing the last node
-        prevNode.next = null;
-      } else if (prevNode.hasOwn(head)) {
-        //change the linked lists head property to null deleting the last/only node
-        prevNode.head = null;
-      }
+      prevNode.next = null;
     }
   }
 
@@ -136,7 +129,23 @@ export default class LinkedList {
   }
 
   //returns the index of the node containing value, or null if not found.
-  find(value) {}
+  find(value) {
+    if (this.head === null) {
+      return null;
+    } else {
+      let currentNode = this.head;
+      let indexCount = 0;
+      while (currentNode.next !== null && currentNode.value !== value) {
+        indexCount++;
+        currentNode = currentNode.next;
+      }
+      if (currentNode.value === value) {
+        return indexCount;
+      } else {
+        return null;
+      }
+    }
+  }
 
   //represents your LinkedList objects as strings, so you can print them out and preview them in the console. The format should be: ( value ) -> ( value ) -> ( value ) -> null
   toString() {
@@ -144,14 +153,13 @@ export default class LinkedList {
     if (this.head === null) {
       return null;
     } else {
-      //I think we'll use iteration and build a string for each node that we'll combine to make a result string
-      // parentheses if there is a value property/obj!==null, value, close parentheses, arrow, repeat unless null then null
       let stringArr = [];
       let currentNode = this.head;
-      while (currentNode.next !== null) {
+      while (currentNode !== null) {
         stringArr.push(`(${currentNode.value}) -> `);
         currentNode = currentNode.next;
       }
+      //null ending
       stringArr.push("null");
       return stringArr.join("");
     }
@@ -160,8 +168,13 @@ export default class LinkedList {
   //that inserts a new node with the provided value at the given index.
   insertAt(value, index) {
     if ((this.head === null) & (index > 0)) {
+      //no nodes but index other than 0 is given
       console.log("index greater than current amount of nodes");
+    } else if (index === 0 && head === null) {
+      //replacing the first node which wasn't a node
+      this.head = new NodeInstance(value);
     } else {
+      //when inserting a node anywhere else in the list
       let currentNode = this.head;
       let currentIndex = 0;
       let prevNode;
@@ -184,8 +197,12 @@ export default class LinkedList {
 
   //that removes the node at the given index.
   removeAt(index) {
+    //if list is empty
     if (this.head === null) {
       console.log("list is empty already");
+    } else if (index === 0 && this.head.next === null) {
+      //if list only has one node
+      this.head = null;
     } else {
       let currentNode = this.head;
       let indexCount = 0;
@@ -195,9 +212,14 @@ export default class LinkedList {
         currentNode = currentNode.next;
         indexCount++;
       }
-      if (indexCount === index) {
+      //if removing the first node when there are more than one node
+      if (index === 0 && indexCount === 0) {
+        this.head = currentNode.next;
+      } else if (indexCount === index) {
+        //otherwise when removing any node other than the first one
         prevNode.next = currentNode.next;
       } else {
+        //when there are no nodes to delete at that index given
         console.log("no nodes currently at that index");
       }
     }
