@@ -47,6 +47,7 @@ export default class LinkedList {
     //return counter after iteration has completed
     return nodeCount;
   }
+
   //returns the first node in the list or null if no nodes
   head() {
     return this.head;
@@ -70,7 +71,27 @@ export default class LinkedList {
   }
 
   //returns the node at the given index
-  at(index) {}
+  at(index) {
+    //check whether there are nodes in the list, if not return null
+    if (this.head === null) {
+      return null;
+    } else {
+      //otherwise, create a counter variable and a temp variable to point with, iterate over the nodes until you find the node at the index value position or the end of the linked list
+      //we'll increment this temp node variable differently because we want to return the node, not just the counter or the value property's value
+      let counter = 0;
+      let tempNode = this.head;
+      while (tempNode !== null && counter !== index) {
+        counter++;
+        tempNode += ".next";
+      }
+      //check whether the counter value does match index and if so return index, otherwise return null because that means the length of the list is not the index value
+      if (counter === index) {
+        return tempNode;
+      } else {
+        return null;
+      }
+    }
+  }
 
   //removes the last element from the list
   pop() {}
