@@ -49,7 +49,7 @@ export default class LinkedList {
   }
 
   //returns the first node in the list
-  head() {
+  getHead() {
     return this.head;
   }
 
