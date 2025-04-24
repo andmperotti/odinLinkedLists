@@ -158,7 +158,29 @@ export default class LinkedList {
   }
 
   //that inserts a new node with the provided value at the given index.
-  insertAt(value, index) {}
+  insertAt(value, index) {
+    if ((this.head === null) & (index > 0)) {
+      return "index greater than current amount of nodes";
+    } else {
+      let currentNode = this.head;
+      let currentIndex = 0;
+      let prevNode;
+      while (currentIndex !== index && currentNode.next !== null) {
+        //iterate until you have reached the index targeted or until the end of the array
+        prevNode = currentNode;
+        currentIndex++;
+        currentNode = currentNode.next;
+      }
+      //if the reached node is the correctly targeted index then insert the new node
+      if (currentIndex === index) {
+        let newNode = new NodeInstance(value);
+        prevNode.next = newNode;
+        newNode.next = currentNode;
+      } else {
+        return "index grater than current amount of nodes";
+      }
+    }
+  }
 
   //that removes the node at the given index.
   removeAt(index) {}
