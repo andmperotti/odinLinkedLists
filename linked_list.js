@@ -47,21 +47,26 @@ export default class LinkedList {
     //return counter after iteration has completed
     return nodeCount;
   }
-
-  //returns the first node in the list
+  //returns the first node in the list or null if no nodes
   head() {
-    return this;
+    return this.head;
   }
 
   //returns the last node in the list
   tail() {
-    let tempNode = this.head;
-    //iterate until you reach the element before the last element, and change the temp variable to the next node
-    while (tempNode.next !== null) {
-      tempNode = tempNode.next;
+    //if the linked list is empty return null, as in there are no nodes in the list
+    if (this.head === null) {
+      return null;
+    } else {
+      //otherwise if there are nodes, ,create a temp variable to point at the first node
+      let tempNode = this.head;
+      //iterate until you reach the element before the last element, and change the temp variable to the next node
+      while (tempNode.next !== null) {
+        tempNode = tempNode.next;
+      }
+      //return the last node, which is pointing to the tail node of the linked list
+      return tempNode;
     }
-    //return the last node, which is pointing to the tail node of the linked list
-    return tempNode;
   }
 
   //returns the node at the given index
@@ -78,16 +83,21 @@ export default class LinkedList {
 
   //represents your LinkedList objects as strings, so you can print them out and preview them in the console. The format should be: ( value ) -> ( value ) -> ( value ) -> null
   toString() {
-    //I think we'll use iteration and build a string for each node that we'll combine to make a result string
-    // parentheses if there is a value property/obj!==null, value, close parentheses, arrow, repeat unless null then null
-    let stringArr = [];
-    let currentNode = this;
-    while (currentNode.next !== null) {
-      stringArr.push(`(${currentNode.value}) -> `);
-      currentNode = currentNode.next;
+    //check if the list is empty
+    if (this.head === null) {
+      return null;
+    } else {
+      //I think we'll use iteration and build a string for each node that we'll combine to make a result string
+      // parentheses if there is a value property/obj!==null, value, close parentheses, arrow, repeat unless null then null
+      let stringArr = [];
+      let currentNode = this.head;
+      while (currentNode.next !== null) {
+        stringArr.push(`(${currentNode.value}) -> `);
+        currentNode = currentNode.next;
+      }
+      stringArr.push("null");
+      return stringArr.join("");
     }
-    stringArr.push("null");
-    return stringArr.join("");
   }
 
   //that inserts a new node with the provided value at the given index.
