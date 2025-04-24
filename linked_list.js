@@ -169,8 +169,7 @@ export default class LinkedList {
         let newNode = new NodeInstance(value);
         prevNode.next = newNode;
         newNode.next = currentNode;
-      }
-      if (currentIndex + 1 === index) {
+      } else if (currentIndex + 1 === index) {
         currentNode.next = new NodeInstance(value);
         currentNode.next.next = null;
       } else {
